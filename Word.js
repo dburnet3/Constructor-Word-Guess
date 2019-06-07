@@ -1,35 +1,7 @@
-var Letter = require('./Letter.js');
+//Contains a constructor.  Word depends on the Letter constructor.
 
-function Word(word) {
-    this.fullWord = function (word) {
-        var newLetters = [];
-        for (var i = 0; i < word.length; i++) {
-            var charac = word[i];
-            var currentLetter = new Letter(charac);
-            newLetters.push(currentLetter);
-        }
-        return newLetters;
-    }
+//An array of new Letter objects representing hte letters of hte underlying word
 
-    this.word = this.fullWord(word);
+//A function that returns a string representing the word.  This should call the function on each letter object that displays the character or an underscore and concatenate those together.
 
-    this.show = function () {
-        var showWord = "";
-        for (var i = 0; i < this.word.length; i++) {
-            var newLetters = this.word[i];
-            showWord += currentLetter.display() + " ";
-        }
-        console.log(showWord);
-    }
-    this.confirmLetter = function (Letter) {
-        for (var i = 0; i < this.word.length; i++) {
-            var currentLetter = this.word[i];
-            console.log(currentLetter);
-            currentLetter.checkGuess(Letter);
-        }
-        return this.display;
-    }
-}
-
-
-module.exports = Word;
+//A function that takes a character as an argument and calls teh guess function on each letter object.
