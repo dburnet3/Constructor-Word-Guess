@@ -1,23 +1,25 @@
-function Letter(character) {
-    this.character = character; // a string value to store the underlying character for the letter
-    this.guess = false; //a boolean value that stores whether the 'character' has been guessed yet.
-    this.showGuess = function () {
-        if (this.guess === true) { //a function that returns the underlyig character if the letter has been guessed
-            return this.character;
-        } else { //an underscore if the letter has not been guessed.
-            return "_";
+function Letter(value) {// Contains a constructor, Letter.
+    this.letter = value;
+    this.guessed = false;
+    this.toString = function () {//A function that returns the underlying character if the letter has been guessed, or a placeholder (like an underscore) if the letter has not been guessed
+
+        if (this.letter === " ") {
+            this.guessed = true;
+            return " ";
+        } else {
+            if (this.guessed === false) {
+                return "_";
+            } else {
+                return this.letter;
+            }
+        }
+    };
+    
+    this.guess = function (guess) {// A function that takes a character as an argument and checks it against the underlying character, updating the stored boolean value to true if it was guessed correctly
+        if (guess === this.letter) {
+            this.guessed = true;
         }
     }
-    this.checkGuess = function (guess) { //a function that takes a character as an argument and checks it against the underlying character
-        var guess = "W";
-        if (guess === this.character) {
-            this.guess = true; // updates the stored boolean value to true if the guess is correct
-        }
-        else {
-            return false;
-            
-        }
-    }
+}
 
 module.exports = Letter;
-}
